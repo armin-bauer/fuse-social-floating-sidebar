@@ -16,11 +16,11 @@ function register_fuse_social_sidebar_submenu_page()
 
 add_action('admin_menu', 'register_fuse_social_sidebar_submenu_page');
 
-//Getting square icons image for Admin Settings 
+//Getting square icons image for Admin Settings
 
 $awesome_sq_icon = "Square Icons  <img src='" . plugin_dir_url(__FILE__) . "img/square_logo.png' /> &nbsp;  &nbsp;  &nbsp; ";
 
-//Getting round icons image for Admin Settings 
+//Getting round icons image for Admin Settings
 
 $awesome_ro_icon = "Round Icons  <img src='" . plugin_dir_url(__FILE__) . "img/round_logo.png' />";
 
@@ -72,6 +72,26 @@ $size_options = array(
 
 );
 
+$pos_options = array(
+
+	'left' => array(
+
+		'value' =>	'left',
+
+		'label' => __( 'Left', 'fuse_social' )
+
+	),
+
+	'right' => array(
+
+		'value' =>	'right',
+
+		'label' => __( 'Right', 'fuse_social' )
+
+	)
+
+);
+
 // Awesome Social  call back for Admin Settings
 
 function fuse_social_callback()
@@ -91,7 +111,7 @@ function fuse_social_callback()
 
 				_e('<div class="wrap"><div id="icon-tools" class="icon32"></div>',"fuse_social");
 
-				_e('<h2>Fuse Social Sidebar</h2>',"fuse_social");
+				_e('<div class="version_fuse_top_head"><h2 class="top_header_fuse">Fuse Social Sidebar</h2><div class="ver-numb">Version 2.0</div></div>',"fuse_social");
 
 		?>
 
@@ -99,22 +119,22 @@ function fuse_social_callback()
 
 		// Activating tabs for Admin Settings
 (function( $ ) {
- 
+
     // Add Color Picker to all inputs that have 'color-field' class
     $(function() {
         $('.color-field').wpColorPicker();
     });
-     
+
 })( jQuery );
             (function( $ ) {
     $(function() {
-         
+
         // Add Color Picker to all inputs that have 'color-field' class
         $( '.cpa-color-picker' ).wpColorPicker();
-         
+
     });
 })( jQuery );
-            
+
 		$j=jQuery.noConflict();
 
 		$j(document).ready(function(){
@@ -181,7 +201,7 @@ function fuse_social_callback()
 
 		?>
 
-		
+
 
 		});
 
@@ -215,7 +235,7 @@ function fuse_social_callback()
 
 			// Getting social icons style type i.e Round or Sqaure for Admin Settings
 
-				global $style_options,$size_options;
+				global $style_options,$size_options,$pos_options;
 
 				$fuse_social_style = "";
 
@@ -287,7 +307,7 @@ function fuse_social_callback()
 
 					<td style="width: 300px;">
 
-		<?php // Open Links in new tab setting ?>			
+		<?php // Open Links in new tab setting ?>
 
 						<input id="fuse_social_options[linksnewtab]" name="fuse_social_options[linksnewtab]" type="checkbox" value="1" <?php
 
@@ -295,13 +315,13 @@ function fuse_social_callback()
 
 			?>  />
 
-					
+
 
 						<label class="awesome_description" for="fuse_social_options[linksnewtab]"><strong><?php _e("Open links new tab.","fuse_social"); ?></strong></label>
 
 						</td>
 
-			<?php // Animation Settings ?>			
+			<?php // Animation Settings ?>
 
 									<td>
 
@@ -311,17 +331,17 @@ function fuse_social_callback()
 
 			?>  />
 
-					
+
 
 						<label class="awesome_description" for="fuse_social_animate"><strong><?php _e("Animation on hover","fuse_social"); ?> </strong></label>
 
-			<?php // Animation time settings ?>		
+			<?php // Animation time settings ?>
 
 						<input  id="fuse_social_options_anim_sec" value="<?php
 
 							esc_attr_e($options['animate_sec']);
 
-			?>" name="fuse_social_options[animate_sec]" type="text" placeholder="Delay in Seconds" style="width:250px;" /> 
+			?>" name="fuse_social_options[animate_sec]" type="text" placeholder="Delay in Seconds" style="width:250px;" />
 
 			<span id="fuse_social_options_anim_s"><em><?php _e("Animation delay in seconds. For-example 0.5","fuse_social") ?></em></span>
 
@@ -329,7 +349,46 @@ function fuse_social_callback()
 
 						</td>
 
-						
+						<td style="padding-top:8px;">
+
+						<hr />
+
+						<select name="fuse_social_options[position]">
+
+												<?php
+
+												// Setting size of Social icons.
+
+										$selected = $options['position'];
+
+										$p = '';
+
+										$r = '';
+
+
+										foreach ( $pos_options as $option ) {
+
+											$label = $option['label'];
+
+											if ( $selected == $option['value'] ) // Make default first in list
+
+												$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+
+											else
+
+												$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+
+										}
+
+										echo $p . $r;
+
+									?>
+
+								</select>
+
+								<label class="description" for="fuse_social_options[position]"><?php _e( '<strong>Position</strong>', 'fuse_social' ); ?></label>
+
+										</td>
 
 						</tr>
 
@@ -347,9 +406,9 @@ function fuse_social_callback()
 
 			?>  />
 
-									
 
-							
+
+
 
 						<label class="awesome_description" for="fuse_social_options[shadow]"><strong><?php _e("Don't use shadow in icons.","fuse_social"); ?></strong></label>
 
@@ -366,9 +425,9 @@ function fuse_social_callback()
 
 			?>  />
 
-									
 
-							
+
+
 
 						<label class="awesome_description" for="fuse_social_options[mobile]"><strong><?php _e("Don't show in Mobile Version","fuse_social"); ?></strong></label>
 
@@ -381,7 +440,7 @@ function fuse_social_callback()
 
 										<?php
 
-										// Setting size of Social icons. 
+										// Setting size of Social icons.
 
 								$selected = $options['size'];
 
@@ -422,19 +481,19 @@ function fuse_social_callback()
 <?php
     add_action( 'admin_enqueue_scripts', 'awesome_color_picker' );
 function awesome_color_picker( $hook ) {
- 
-    if( is_admin() ) { 
-     
-        // Add the color picker css file       
-        wp_enqueue_style( 'wp-color-picker' ); 
-         
+
+    if( is_admin() ) {
+
+        // Add the color picker css file
+        wp_enqueue_style( 'wp-color-picker' );
+
         // Include our custom jQuery file with WordPress Color Picker dependency
-        wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+        wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
     }
 }
 
     ?>
-			
+
 
 						<label class="samecolor" for="fuse_social_options[colorpicker]"><strong><?php _e("Use custom background color for all icons.","fuse_social"); ?></strong></label>
 <input class="cpa-color-picker"  id="fuse_social_options[colorpicker]" value="<?php
@@ -454,9 +513,9 @@ function awesome_color_picker( $hook ) {
 
 			?>  />
 
-									
 
-							
+
+
 
 						<label class="awesome_description" for="fuse_social_options[hover]"><strong><?php _e("Change icon color on hover - For Custom Background","fuse_social"); ?></strong></label>
 
@@ -464,9 +523,9 @@ function awesome_color_picker( $hook ) {
 
                         </tr>
 
-				
 
-					
+
+
 
 							</table>
 
@@ -479,7 +538,7 @@ function awesome_color_picker( $hook ) {
 <?php // Setting links for social icons from Admin Settings ?>
 
 				<strong><?php _e("Enter the URL(s) for your various social profiles below. If you leave a profile URL field blank, it will not be used.","fuse_social") ?> </strong>
-                
+
 
 				<div class="awesome_spacer"></div>
 
@@ -505,7 +564,7 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[twitter]" type="text" placeholder="Twitter URL" />
 
-					
+
 
 
 
@@ -519,7 +578,7 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[rss]" type="text" placeholder="Rss URL" />
 
-				
+
 
 
 
@@ -529,7 +588,7 @@ function awesome_color_picker( $hook ) {
 
 				<tr>
 
-				
+
 
 					<td>
 
@@ -541,9 +600,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[linkedin]" type="text" placeholder="Linkedin URL" />
 
-									
 
-						
+
+
 
 					</td>
 
@@ -571,7 +630,7 @@ function awesome_color_picker( $hook ) {
 
 
 
-						
+
 
 					</td>
 
@@ -591,7 +650,7 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[pinterest]" type="text" placeholder="Pinterest URL" />
 
-						
+
 
 						</td>
 
@@ -605,9 +664,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[stumbleupon]" type="text" placeholder="Stumbleupon URL" />
 
-						
 
-					
+
+
 
 				</td>
 
@@ -615,7 +674,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-						
+
 
 															<i class="fa fa-google-plus"></i><label for="fuse_social_options[google-plus]" > Google Plus</label><br /><input  id="fuse_social_options[google-plus]" value="<?php
 
@@ -623,15 +682,15 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[google-plus]" type="text" placeholder="Google Plus URL" />
 
-						
 
-					
+
+
 
 					</td>
 
 				</tr>
 
-				
+
 
 						<tr>
 
@@ -639,7 +698,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-								
+
 
 					<i class="fa fa-instagram"></i><label for="fuse_social_options[instagram]" > Instagram</label><br /><input  id="fuse_social_options[instagram]" value="<?php
 
@@ -647,9 +706,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[instagram]" type="text" placeholder="Instagram URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -663,9 +722,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[tumblr]" type="text" placeholder="Tumblr URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -673,7 +732,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-						
+
 
 									<i class="fa fa-vine"></i><label for="fuse_social_options[vine]" > Vine</label><br /><input  id="fuse_social_options[vine]" value="<?php
 
@@ -681,20 +740,20 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[vine]" type="text" placeholder="Vine URL" />
 
-						
+
 
 				</td>
 
 				</tr>
-                                
-                                
+
+
 						<tr>
 
 					<td>
 
 						<hr />
 
-								
+
 
 					<i class="fa fa-vk"></i><label for="fuse_social_options[vk]" > VK</label><br /><input  id="fuse_social_options[vk]" value="<?php
 
@@ -702,9 +761,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[vk]" type="text" placeholder="VK URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -718,9 +777,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[soundcloud]" type="text" placeholder="Sound Cloud URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -728,7 +787,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-						
+
 
 									<i class="fa fa-reddit"></i><label for="fuse_social_options[reddit]" > Reddit</label><br /><input  id="fuse_social_options[reddit]" value="<?php
 
@@ -736,21 +795,21 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[reddit]" type="text" placeholder="Reddit URL" />
 
-						
+
 
 				</td>
 
 				</tr>
 
-                                
-                                                 
+
+
 						<tr>
 
 					<td>
 
 						<hr />
 
-								
+
 
 					<i class="fa fa-stack-overflow"></i><label for="fuse_social_options[stack]" > Stack OverFLow</label><br /><input  id="fuse_social_options[stack]" value="<?php
 
@@ -758,9 +817,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[stack]" type="text" placeholder="Stack OverFlow URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -774,9 +833,9 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[behance]" type="text" placeholder="Behance URL" />
 
-						
 
-				
+
+
 
 					</td>
 
@@ -784,7 +843,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-						
+
 
 									<i class="fa fa-github"></i><label for="fuse_social_options[github]" > Github</label><br /><input  id="fuse_social_options[github]" value="<?php
 
@@ -792,7 +851,7 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[github]" type="text" placeholder="Github URL" />
 
-						
+
 
 				</td>
 
@@ -803,7 +862,7 @@ function awesome_color_picker( $hook ) {
 
 						<hr />
 
-						
+
 
 									<i class="fa fa-envelope-o"></i><label for="fuse_social_options[envelope]" > Email</label><br /><input  id="fuse_social_options[envelope]" value="<?php
 
@@ -811,7 +870,7 @@ function awesome_color_picker( $hook ) {
 
 			?>" name="fuse_social_options[envelope]" type="text" placeholder="mailto:someone@example.com" />
 
-						
+
 
 				</td>
 				<td>
@@ -825,15 +884,27 @@ function awesome_color_picker( $hook ) {
 
 
         				</td>
-                 </tr>     
-                                
-			</table>		
+                 </tr>
+
+			</table>
 
 			</div>
-
+			<div class="my-social-connections">
+		<a href="https://www.paypal.me/daniyalahmedk" target="_blank"><img src="http://www.gotscience.org/wp-content/uploads/2016/05/paypaldonateButton-flat.png"class="donate-btn" /></a>
+				<div class="facebook_prof">
+					Show your love of plugin by posting on my wall (appericiations,suggestions)
+					<!-- Facebook Badge START --><a href="https://www.facebook.com/mewoooooo" title="Daniyal Ahmad" style="font-family: &quot;lucida grande&quot;,tahoma,verdana,arial,sans-serif; font-size: 11px; font-variant: normal; font-style: normal; font-weight: normal; color: #3B5998; text-decoration: none;" target="_TOP">Daniyal Ahmad</a><br /><a href="https://www.facebook.com/mewoooooo" title="Daniyal Ahmad" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/100000485113612.1956.488944817.png" style="border: 0px;" alt="" /></a><!-- Facebook Badge END -->
+				</div>
+				<div class="twitter">
+				<h4>FOLLOW ME ON TWITTER</h4>
+					<a href="https://twitter.com/mewooooooooo" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false">Follow @mewooooooooo</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			</div>
+			<div class="clear-scale">
+			</div>
 					<p class="submit">
 
-							<input type="submit" class="button-primary" value="<?php
+							<input type="submit" class="button-primary fuse-social-submit" value="<?php
 
 							_e('Save Options', 'awesomesocial');
 
@@ -841,7 +912,7 @@ function awesome_color_picker( $hook ) {
 
 						<?php
 
-							echo "<img src='" . plugin_dir_url(__FILE__) . "img/loading.gif' id='fuse_social_load'/>";
+							echo "<div class='loading-cover-pi'><img src='" . plugin_dir_url(__FILE__) . "img/loader.gif' id='fuse_social_load'/></div>";
 
 			?>
 
@@ -853,7 +924,7 @@ function awesome_color_picker( $hook ) {
 
 									<div class="awesome_spacer"></div>
 
-									<p>Made With Love - By  (<a href="https://www.facebook.com/mewoooooo" target="_blank" >Daniyal Ahmed</a>).</p><br />
+									<p>Made With Love - By  (<a href="https://www.facebook.com/mewoooooo" target="_blank" >Daniyal Ahmed</a>). If you love this plugin don't forget to review <a href="https://wordpress.org/support/view/plugin-reviews/fuse-social-floating-sidebar" target="_blank"> Review Now!</a></p><br />
 
 					</form>
 
@@ -864,13 +935,14 @@ function awesome_color_picker( $hook ) {
 					jQuery(document).ready(function() {
 
 					jQuery("#fuse_social_load").hide();
+					jQuery(".loading-cover-pi").hide();
 
-					jQuery('#fuse_social_form').submit(function() { 
-
+					jQuery('#fuse_social_form').submit(function() {
+					jQuery(".loading-cover-pi").show();
 					jQuery("#fuse_social_load").show();
 
 					jQuery(this).ajaxSubmit({
-                       
+
 
 					success: function(){
 
@@ -883,13 +955,13 @@ function awesome_color_picker( $hook ) {
 					echo htmlentities(__('Settings Saved Successfully', 'wp'), ENT_QUOTES);
 
 					?></p>").show();
-
-							 }, 
+					jQuery(".loading-cover-pi").hide();
+							 },
 
 							 timeout:5000,
                 error: function(data){
                  		jQuery("#fuse_social_load").hide();
-                        
+
 					jQuery('#saveResult').html("<div id='saveMessage' class='successModal'></div>");
 
 					jQuery('#saveMessage').append("<p><?php
@@ -898,11 +970,11 @@ function awesome_color_picker( $hook ) {
 
 					?></p>").show();
                     }
-						  }); 
+						  });
 
 						  setTimeout("jQuery('#saveMessage').hide('slow');", 5000);
 
-						  return false; 
+						  return false;
 
 					   });
 
@@ -914,7 +986,7 @@ function awesome_color_picker( $hook ) {
 
 							echo '</div>';
 
-		
+
 
 		}
 
@@ -938,7 +1010,7 @@ function fuse_social_icon_validate($input)
 
 		{
 
-				global $size_options, $style_options;
+				global $size_options, $style_options,$pos_options;
 
 				// Link new tab checkbox value is either 0 or 1
 
@@ -1000,11 +1072,19 @@ function fuse_social_icon_validate($input)
 
 				$input['vine']     = wp_filter_nohtml_kses($input['vine']);
 
+				$input['xing']     = wp_filter_nohtml_kses($input['xing']);
+
 				// Our size option must actually be in our array of size options
 
 				if ( ! array_key_exists( $input['size'], $size_options ) )
 
 				$input['size'] = null;
+
+				// Our size option must actually be in our array of size options
+
+				if ( ! array_key_exists( $input['position'], $pos_options ) )
+
+				$input['position'] = null;
 
 				return $input;
 

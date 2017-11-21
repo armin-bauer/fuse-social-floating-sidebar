@@ -9,13 +9,23 @@ function fuse_social_scripts()
 				echo '<link href="'.plugin_dir_url(__FILE__).'css/font-awesome.min.css" rel="stylesheet">';
 			?>
 			<style>
+			<?php 	if($options['position']=="left"){ ?>
 			#icon_wrapper
 			{
 			position: fixed;
-top: 25%;
-left: 0px;
-z-index: 99999;
-}
+			top: 25%;
+			left: 0px;
+			z-index: 99999;
+			}
+			<?php } else {  ?>
+				#icon_wrapper
+				{
+				position: fixed;
+				top: 25%;
+				right: 0px;
+				z-index: 99999;
+				}
+			<?php } ?>
 			.awesome-social
 			{
                 margin-top:2px;
@@ -75,37 +85,37 @@ z-index: 99999;
 				{
 				?>
 				-moz-transition: width <?php echo $options['animate_sec']; ?>s, height <?php echo $options['animate_sec']; ?>s, -webkit-transform <?php echo $options['animate_sec']; ?>s; /* For Safari 3.1 to 6.0 */
-				
+
 				-webkit-transition: width <?php echo $options['animate_sec']; ?>s, height <?php echo $options['animate_sec']; ?>s, -webkit-transform <?php echo $options['animate_sec']; ?>s; /* For Safari 3.1 to 6.0 */
 				transition: width <?php echo $options['animate_sec']; ?>s, height <?php echo $options['animate_sec']; ?>s, transform <?php echo $options['animate_sec']; ?>s;
-				
+
 				<?php
 				}
 				?>
-				
+
 			}
 			<?php
 			// Again if animation settings
 				if ($options['animations'] == 1)
 									{
-									
+
 									?>
 			.awesome-social:hover
 			{
-                
+
 			-webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
 				transform: rotate(deg);
 					-moz-transform: rotate(360deg); /* Chrome, Safari, Opera */
 							-ms-transform: rotate(360deg); /* Chrome, Safari, Opera */
-			
-			}	
+
+			}
 				<?php
 				}
 				?>
 			.fuse_social_icons_links
 			{
 			outline:0 !important;
-		
+
 			}
 			.fuse_social_icons_links:hover{
 			text-decoration:none !important;
@@ -160,36 +170,36 @@ z-index: 99999;
 			background: #00bf8f ;
 			}
             .vk-awesome-social {
-            
+
             background: #45668e ;
-			
+
             }
             .soundcloud-awesome-social
                 {
             background: #ff3300 ;
-                
+
                 }
                 .reddit-awesome-social{
-                
+
             background: #ff4500 ;
-                
+
                 }
                 .stack-awesome-social{
-                
+
             background: #fe7a15 ;
-                
+
                 }
                 .behance-awesome-social{
             background: #1769ff ;
-                
+
                 }
                 .github-awesome-social{
             background: #999999 ;
-                
-                
+
+
                 }
                 .envelope-awesome-social{
-                  background: #ccc ;	
+                  background: #ccc ;
                 }
                 .xing-awesome-social {
                   background: #007575 ;
@@ -212,7 +222,7 @@ if ( wp_is_mobile() ) {
 }
 ?>
 
-/* Custom Background */     
+/* Custom Background */
 <?php
 if($options['colorpicker'])
 {
@@ -230,7 +240,7 @@ if($options['colorpicker'])
                 {
                     ?>
              .awesome-social{
-                
+
 -webkit-transition-property:color, text;
 -webkit-transition-duration: 0.25s, 0.25s;
 -webkit-transition-timing-function: linear, ease-in;
@@ -290,43 +300,43 @@ if($options['colorpicker'])
 			{
 			color: #00bf8f  !important;
 			}
-            
+
             .vk-awesome-social:hover {
-            
+
             color: #45668e !important;
-			
+
             }
             .soundcloud-awesome-social:hover
                 {
             color: #ff3300 !important;
-                
+
                 }
                 .reddit-awesome-social:hover{
-                
+
             color: #ff4500 !important;
-                
+
                 }
                 .stack-awesome-social:hover{
-                
+
             color: #fe7a15 !important;
-                
+
                 }
                 .behance-awesome-social:hover{
             color: #1769ff !important;
-                
+
                 }
                 .github-awesome-social:hover{
             color: #999999 !important;
-                
-                
-                }    
-                
-                
+
+
+                }
+
+
                  <?php
                 }
                     ?>
-              
-                    
+
+
 			</style>
 <?php
 	}
