@@ -95,6 +95,11 @@ class Making_Fuse_Icons
 												$google = $options['google-plus'];
 												echo "<a $target class='fuse_social_icons_links' href='$google'>	<i class='fa fa-google-plus google-plus-awesome-social awesome-social'></i></a><br />";
 										}
+								if ($options['xing'])
+										{
+												$xing = $options['xing'];
+												echo "<a $target class='fuse_social_icons_links' href='$xing'>	<i class='fa fa-xing xing-awesome-social awesome-social'></i></a><br />";
+										}
 								if ($options['instagram'])
 										{
 												$instagram = $options['instagram'];

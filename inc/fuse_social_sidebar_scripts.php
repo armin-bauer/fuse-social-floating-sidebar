@@ -191,6 +191,9 @@ z-index: 99999;
                 .envelope-awesome-social{
                   background: #ccc ;	
                 }
+                .xing-awesome-social {
+                  background: #007575 ;
+                }
 /*  Mobile */
 
 <?php
