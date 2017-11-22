@@ -879,7 +879,7 @@ function awesome_color_picker( $hook ) {
 
 
 
-        									<i class="fa fa-envelope-o"></i><label for="fuse_social_options[xing]" > Xing</label><br /><input  id="fuse_social_options[xing]" value="<?php esc_attr_e($options['xing']); ?>" name="fuse_social_options[xing]" type="text" placeholder="Xing URL" />
+        									<i class="fa fa-xing"></i><label for="fuse_social_options[xing]" > Xing</label><br /><input  id="fuse_social_options[xing]" value="<?php esc_attr_e($options['xing']); ?>" name="fuse_social_options[xing]" type="text" placeholder="Xing URL" />
 
 
 
