@@ -3,7 +3,7 @@
 Plugin Name: Fuse Social Floating Sidebar
 Plugin URI: http://photontechs.com/fuse-social-sidebar
 Description: This Fuse Social Floating Sidebar plugin allow you to put social icons which can be link with your social media profiles.
-Version: 1.1
+Version: 2.0
 Author: Daniyal Ahmed
 Author URI: http://www.photontechs.com
 License: GNU General Public License v3.0
@@ -20,12 +20,12 @@ require_once('inc/fuse_social_sidebar_func.php');
 // Getting Style for awesome icons
 require_once('inc/fuse_social_sidebar_scripts.php');
 // Add settings link on plugin page
-function fuse_social_settings_link($links) { 
-  $settings_link = '<a href="options-general.php?page=fuse-social-sidebar">Settings</a>'; 
-  array_unshift($links, $settings_link); 
-  return $links; 
+function fuse_social_settings_link($links) {
+  $settings_link = '<a href="options-general.php?page=fuse-social">Settings</a>';
+  array_unshift($links, $settings_link);
+  return $links;
 }
-$plugin = plugin_basename(__FILE__); 
+$plugin = plugin_basename(__FILE__);
 add_filter("plugin_action_links_$plugin", 'fuse_social_settings_link' );
 add_action('wp_footer','fuse_social_sidebar',100);
 

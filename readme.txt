@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: daniyalahmedk	
+Contributors: daniyalahmedk
 Donate link: http://photontechs.com/donate
 Tags: social media, floating sidebar, social widget, social icons,animated social icons
 Requires at least: 3.0.1
-Tested up to: 4.2.1
-Stable tag: 1.1
+Tested up to: 4.7
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,34 +23,35 @@ which allows you to make settings for those social media icons, in the means of 
 <li>Widget and Shortcode </li>
 </ul>
 
-Fuse Social Floating Sidebar is providing two type of icons square and round, further there is also <strong>animation effect which looks much attractive</strong>. 
-You can check live demo 
-
+Fuse Social Floating Sidebar is providing two type of icons square and round, further there is also <strong>animation effect which looks much attractive</strong>.
+You can check live demo
+<strong>Fuse Social </strong> [Demo](https://fusesocialfloating.000webhostapp.com/ "Fuse Social Floating")
+<br />
 
 <strong>Its all depends on users choice that either he wants animation/round/sqaure or with any <em>combinations he needs.</em></strong>
 
 You can also use this plugins as animated social icons. <br />
 Its simple,unique and best WordPress plugin for floating social icons.
-Fuse Social Floating Sidebar allow you to add following social icons in your website  <br /> 
-* Facebook 
-* Twitter 
+Fuse Social Floating Sidebar allow you to add following social icons in your website  <br />
+* Facebook
+* Twitter
 * RSS
-* YouTube 
-* LinkedIn 
+* YouTube
+* LinkedIn
 * Flickr
 * Pinterest
 * StumbleUpon
 * Google Plus
-* Instagram 
+* Instagram
 * Tumblr
-* Vine 
-* SoundCloud 
+* Vine
+* SoundCloud
 * VK
-* Reddit 
+* Reddit
 * Stack OverFlow
-* Behance 
-* Github 
-
+* Behance
+* Github
+and many more..
 
 == Installation ==
 
