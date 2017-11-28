@@ -32,12 +32,19 @@ foreach ($fuse_social_opt_front as $option)
 										}
 						}
 		}
+
+function replacePage($string) {
+  global $wp;
+  $current_url = urlencode(home_url(add_query_arg(array(), $wp->request)));
+
+  return str_replace('[PAGELINK]', $current_url, $string);
+}
+
 class Making_Fuse_Icons
 		{
 		// Generating Icons with respective links
 				function Create_Awesome_Icons()
 						{
-						
 								$options = get_option('fuse_social_options');
 								echo "<div id='icon_wrapper'>";
 								// Checking if target is _self or _blank
@@ -52,7 +59,7 @@ class Making_Fuse_Icons
 								// Checking if social icon value is set from admin settings then display that icon, other wise not.
 								if ($options['facebook'])
 										{
-												$facebook = $options['facebook'];
+												$facebook = replacePage($options['facebook']);
 												echo "<a  $target  class='fuse_social_icons_links' href='$facebook'>	<i class='fa fa-facebook fb-awesome-social awesome-social'></i></a><br />";
 										}
 								if ($options['twitter'])
@@ -67,7 +74,7 @@ class Making_Fuse_Icons
 										}
 								if ($options['linkedin'])
 										{
-												$linkedin = $options['linkedin'];
+												$linkedin = replacePage($options['linkedin']);
 												echo "<a $target class='fuse_social_icons_links' href='$linkedin'>	<i class='fa fa-linkedin linkedin-awesome-social awesome-social'></i></a><br />";
 										}
 								if ($options['youtube'])
@@ -92,12 +99,12 @@ class Making_Fuse_Icons
 										}
 								if ($options['google-plus'])
 										{
-												$google = $options['google-plus'];
+												$google = replacePage($options['google-plus']);
 												echo "<a $target class='fuse_social_icons_links' href='$google'>	<i class='fa fa-google-plus google-plus-awesome-social awesome-social'></i></a><br />";
 										}
 								if ($options['xing'])
 										{
-												$xing = $options['xing'];
+												$xing = replacePage($options['xing']);
 												echo "<a $target class='fuse_social_icons_links' href='$xing'>	<i class='fa fa-xing xing-awesome-social awesome-social'></i></a><br />";
 										}
 								if ($options['instagram'])
